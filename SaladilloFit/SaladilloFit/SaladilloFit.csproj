@@ -45,8 +45,12 @@
     <Compile Include="Model\Objetivos.cs" />
     <Compile Include="Model\Usuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\Gerente_ViewModel.cs" />
     <Compile Include="ViewModel\Login_ViewModel.cs" />
     <Compile Include="ViewModel\Usuario_ViewModel.cs" />
+    <Compile Include="View\Gerente_View.xaml.cs">
+      <DependentUpon>Gerente_View.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Login_View.xaml.cs">
       <DependentUpon>Login_View.xaml</DependentUpon>
     </Compile>
@@ -97,6 +101,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="View\Gerente_View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.4.0.280\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.4.0.280\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />

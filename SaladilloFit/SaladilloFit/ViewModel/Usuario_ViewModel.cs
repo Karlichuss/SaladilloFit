@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SaladilloFit.View;
-using Xamarin.Forms;
+﻿using SaladilloFit.Assets;
 using SaladilloFit.Model;
-using SaladilloFit.Assets;
+using SaladilloFit.View;
+using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace SaladilloFit.ViewModel
 {
@@ -29,6 +25,7 @@ namespace SaladilloFit.ViewModel
         {
             this.page = usuario_View;
             this.navigation = navigation;
+            this.usuario = usuario;
             this.lblSaludo = lblSaludo;
             this.lblDNI = lblDNI;
             this.lblHorario = lblHorario;
@@ -39,12 +36,12 @@ namespace SaladilloFit.ViewModel
             this.lblIMC = lblIMC;
         }
 
-        public void RellenarDatos()
+        public async Task RellenarDatos()
         {
             lblSaludo.Text = "Bienvenido, " + usuario.Nombre;
             lblDNI.Text = usuario.DNI;
-            lblHorario.Text = Horarios_Repository.GetItem(usuario.Horario).Horario;
-            lblObjetivo.Text = Objetivos_Repository.GetItem(usuario.Objetivo).Objetivo;
+            lblHorario.Text =( await Horarios_Repository.GetItem(usuario.Horario)).Horario;
+            lblObjetivo.Text =( await Objetivos_Repository.GetItem(usuario.Objetivo)).Objetivo;
             lblEdad.Text = usuario.Edad.ToString();
             lblAltura.Text = usuario.Altura.ToString();
             lblPeso.Text = usuario.Peso.ToString();

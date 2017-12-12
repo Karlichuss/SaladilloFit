@@ -39,15 +39,15 @@ namespace SaladilloFit.ViewModel
         public async Task Iniciar_SesionAsync()
         {
             // Primero comprobamos que el usuario no ha dejado algún campo vacío.
-            if (string.IsNullOrEmpty(txtUsuario.Text.ToString()) || string.IsNullOrEmpty(txtContrasenia.Text.ToString()))
+            if (string.IsNullOrEmpty(txtUsuario.Text.ToString()) && string.IsNullOrEmpty(txtContrasenia.Text.ToString()))
             {
                 lblStatus.Text = "Debe introducir Usuario y Contraseña (9 caracteres)";
             }
-            else if (txtUsuario.Text.Length < 9)
+            else if (string.IsNullOrEmpty(txtUsuario.Text.ToString()) || txtUsuario.Text.Length < 9)
             {
                 lblStatus.Text = "Debe introducir usuario (9 caracteres)";
             }
-            else if (txtContrasenia.Text.Length < 9)
+            else if (string.IsNullOrEmpty(txtContrasenia.Text.ToString()) || txtContrasenia.Text.Length < 9)
             {
                 lblStatus.Text = "Debe introducir contraseña (9 caracteres)";
             }
@@ -56,21 +56,21 @@ namespace SaladilloFit.ViewModel
                 Usuario = await Usuarios_Repository.GetUsuario(txtUsuario.Text);
 
                 // Luego se comprueba si el usuario existe en la base de datos.
-                if (String.IsNullOrEmpty(Usuario.Nombre))
+                if (Usuario.Equals(null))
                 {
                     lblStatus.Text = "El usuario no esta dado de alta.";
                 }
                 else
                 {
                     // Luego comprobamos si la contraseña introducida es correcta.
-                    if (Usuario.Password != txtContrasenia.Text)
+                    if (!Usuario.Password.Equals(txtContrasenia.Text))
                     {
                         lblStatus.Text = "Contraseña incorrecta.";
                     }
                     else
                     {
-                        // Si es cliente inicia la sesión de usuario
-                        if (Usuario.Tipo == Usuarios_Repository.TIPO_USUARIO)
+                        // Si es usuario inicia la sesión de usuario
+                        if (Usuario.Tipo.Equals(Usuarios_Repository.TIPO_USUARIO))
                         {
                             Usuario_View Usuario_View = new Usuario_View(Usuario);
                             await Navigation.PushModalAsync(Usuario_View);
@@ -79,8 +79,8 @@ namespace SaladilloFit.ViewModel
                         // Si no, inicia la sesión de gerente
                         else
                         {
-//                            Gerente_View Gerente_View = new Gerente_View(Usuario);
-  //                          await Navigation.PushModalAsync(Gerente_View);
+                              Gerente_View Gerente_View = new Gerente_View(Usuario);
+                              await Navigation.PushModalAsync(Gerente_View);
                         }
                     }
                 }

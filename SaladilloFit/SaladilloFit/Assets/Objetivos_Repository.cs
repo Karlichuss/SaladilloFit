@@ -2,6 +2,7 @@
 using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,9 +33,29 @@ namespace SaladilloFit.Assets
             conn.CreateTableAsync<Objetivos>().Wait();
         }
 
-        internal static Objetivos GetItem(int objetivo)
+        public async Task<List<Objetivos>> GetAllItems()
         {
-            throw new NotImplementedException();
+            List<Objetivos> lst = new List<Objetivos>();
+            try
+            {
+                lst = await conn.Table<Objetivos>().ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
+            }
+
+            return lst;
+        }
+
+        public static async Task<Objetivos> GetItem(int id)
+        {
+            Objetivos objetivo;
+
+            ObservableCollection<Objetivos> objetivos = new ObservableCollection<Objetivos>(await App.Objetivos_Repository.GetAllItems());
+            objetivo = objetivos.SingleOrDefault(p => p.Id == id);
+
+            return objetivo;
         }
 
         #endregion
