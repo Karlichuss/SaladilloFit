@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SaladilloFit.View.Login_View">
+    <!-- Hoja de Estilos -->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="lytStyle"
+                   TargetType="StackLayout">
+                <Setter Property="BackgroundColor"
+                        Value="Orange"/>
+            </Style>
+            <Style x:Key="lblStyle"
+                   TargetType="Label">
+                <Setter Property="TextColor"
+                        Value="White"/>
+            </Style>
+            <Style x:Key="btnStyle"
+                   TargetType="Button">
+                <Setter Property="TextColor"
+                        Value="Black"/>
+                <Setter Property="BackgroundColor"
+                        Value="White"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <!-- Layout -->
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center"
+                     HorizontalOptions="Center"
+                     Padding="25, 25"
+                     Style="{StaticResource lytStyle}">
+            <StackLayout Orientation="Horizontal">
+                <StackLayout>
+                    <Label x:Name="lblUsuario"
+                       Text="Usuario: "
+                       Style="{StaticResource lblStyle}"/>
+                    <Entry x:Name="txtUsuario"
+                       WidthRequest="200"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label x:Name="lblContrasenia"
+                       Text="Contraseña: "
+                       Style="{StaticResource lblStyle}"/>
+                    <Entry x:Name="txtContrasenia"
+                       WidthRequest="200"
+                       IsPassword="True"/>
+                </StackLayout>
+                <Button x:Name="btnLogIn"
+                    Text="Entrar"
+                    VerticalOptions="End"
+                    HorizontalOptions="FillAndExpand"
+                    Style="{StaticResource btnStyle}"/>
+            </StackLayout>
+            <Label x:Name="lblStatus"
+                   HorizontalOptions="CenterAndExpand"
+                   Margin="30"
+                   Text="{Binding Status}"
+                   Style="{StaticResource lblStyle}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

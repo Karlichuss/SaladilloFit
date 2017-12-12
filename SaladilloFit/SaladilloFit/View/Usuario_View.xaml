@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SaladilloFit.View.Usuario_View">
+    <!-- Hoja de Estilos -->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="lytStyle"
+                   TargetType="StackLayout">
+                <Setter Property="BackgroundColor"
+                        Value="Orange"/>
+            </Style>
+            <Style x:Key="lblStyle"
+                   TargetType="Label">
+                <Setter Property="TextColor"
+                        Value="White"/>
+            </Style>
+            <Style x:Key="btnStyle"
+                   TargetType="Button">
+                <Setter Property="TextColor"
+                        Value="Black"/>
+                <Setter Property="BackgroundColor"
+                        Value="White"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <!-- Layout -->
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center"
+                     HorizontalOptions="Center"
+                     Padding="25, 25"
+                     Style="{StaticResource lytStyle}">
+            
+            <Label x:Name="lblSaludo"
+                   Style="{StaticResource lblStyle}"/>
+
+            <Label Text="DNI"
+                   Style="{StaticResource lblStyle}"/>
+            <Label x:Name="lblDNI"/>
+            
+            <Label Text="Horario"
+                   Style="{StaticResource lblStyle}"/>
+            <Label x:Name="lblHorario"/>
+
+            <Label Text="Objetivo"
+                   Style="{StaticResource lblStyle}"/>
+            <Label x:Name="lblObjetivo"/>
+            
+            <Label Text="Edad"
+                   Style="{StaticResource lblStyle}"/>
+            <Label x:Name="lblEdad"/>
+            
+            <Label Text="Altura"
+                   Style="{StaticResource lblStyle}"/>
+            <Label x:Name="lblAltura"/>
+            
+            <Label Text="Peso"
+                   Style="{StaticResource lblStyle}"/>
+            <Label x:Name="lblPeso"/>
+            
+            <Label Text="IMC"
+                   Style="{StaticResource lblStyle}"/>
+            <Label x:Name="lblIMC"/>
+            
+            <Button x:Name="btnLogout" 
+                    Text="Cambiar Usuario"
+                    Style="{StaticResource btnStyle}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
