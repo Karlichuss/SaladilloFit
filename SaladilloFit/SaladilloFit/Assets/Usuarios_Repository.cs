@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace SaladilloFit.Assets
 {
@@ -49,18 +50,18 @@ namespace SaladilloFit.Assets
         /// <param name="Tipo">El precio del elemento a añadir</param>
 
         /// <returns></returns>
-        public async Task Add_Item(String DNI, String Nombre, String Password)
+        public async Task Add_Item(String Nombre, String Password, String DNI, int Horario, String Edad, String Altura, String Peso, int Objetivo)
         {
             int result = 0;
             try
             {
                 //Comprobamos que el nombre y el precio sean validos.
-                if (string.IsNullOrEmpty(DNI) || string.IsNullOrEmpty(Nombre) || string.IsNullOrEmpty(Password))
+                if (string.IsNullOrEmpty(Nombre) || string.IsNullOrEmpty(Password) || string.IsNullOrEmpty(DNI) || string.IsNullOrEmpty(Edad) || string.IsNullOrEmpty(Altura) || string.IsNullOrEmpty(Peso))
                 {
                     throw new Exception("Valid values required");
                 }
                 // Introducimos el nuevo usuario.
-                result = await conn.InsertAsync(new Usuarios { DNI = DNI, Nombre = Nombre, Password = Password, Tipo = TIPO_USUARIO });
+                result = await conn.InsertAsync(new Usuarios { Nombre = Nombre, Password = Password, DNI = DNI, Horario = Horario, Edad = Int32.Parse(Edad), Altura = Int32.Parse(Altura), Peso = float.Parse(Peso), IMC = Usuarios.CalcularIMC(float.Parse(Peso), Int32.Parse(Altura)), Objetivo = Objetivo, Tipo = TIPO_USUARIO });
 
             }
             catch (Exception ex)
@@ -68,6 +69,8 @@ namespace SaladilloFit.Assets
                 StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
             }
         }
+
+
 
         #endregion
 
@@ -103,6 +106,16 @@ namespace SaladilloFit.Assets
 
             ObservableCollection<Usuarios> usuarios = new ObservableCollection<Usuarios>(await App.Usuarios_Repository.GetAllItems());
             usuario = usuarios.SingleOrDefault(p => p.DNI == DNI);
+
+            return usuario;
+        }
+
+        public static async Task<Usuarios> ExisteNombre(String Nombre)
+        {
+            Usuarios usuario;
+
+            ObservableCollection<Usuarios> usuarios = new ObservableCollection<Usuarios>(await App.Usuarios_Repository.GetAllItems());
+            usuario = usuarios.SingleOrDefault(p => p.Nombre == Nombre);
 
             return usuario;
         }

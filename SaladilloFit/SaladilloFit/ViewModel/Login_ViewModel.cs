@@ -43,11 +43,11 @@ namespace SaladilloFit.ViewModel
             {
                 lblStatus.Text = "Debe introducir Usuario y Contraseña (9 caracteres)";
             }
-            else if (txtUsuario.Text.Length != 9)
+            else if (txtUsuario.Text.Length < 9)
             {
                 lblStatus.Text = "Debe introducir usuario (9 caracteres)";
             }
-            else if (txtContrasenia.Text.Length != 9)
+            else if (txtContrasenia.Text.Length < 9)
             {
                 lblStatus.Text = "Debe introducir contraseña (9 caracteres)";
             }
@@ -79,8 +79,8 @@ namespace SaladilloFit.ViewModel
                         // Si no, inicia la sesión de gerente
                         else
                         {
-                            //Gerente_View Gerente_View = new Gerente_View(Usuario);
-                            //await Navigation.PushModalAsync(Gerente_View);
+//                            Gerente_View Gerente_View = new Gerente_View(Usuario);
+  //                          await Navigation.PushModalAsync(Gerente_View);
                         }
                     }
                 }

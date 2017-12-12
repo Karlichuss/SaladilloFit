@@ -12,7 +12,7 @@ namespace SaladilloFit.ViewModel
 {
     public class Usuario_ViewModel
     {
-        Usuario_View usuario_View;
+        Page page;
         INavigation navigation;
         Usuarios usuario;
 
@@ -25,9 +25,9 @@ namespace SaladilloFit.ViewModel
         Label lblPeso;
         Label lblIMC;
 
-        public Usuario_ViewModel(Usuario_View usuario_View, INavigation navigation, Usuarios usuario, Label lblSaludo, Label lblDNI, Label lblHorario, Label lblObjetivo, Label lblEdad, Label lblAltura, Label lblPeso, Label lblIMC)
+        public Usuario_ViewModel(Page usuario_View, INavigation navigation, Usuarios usuario, Label lblSaludo, Label lblDNI, Label lblHorario, Label lblObjetivo, Label lblEdad, Label lblAltura, Label lblPeso, Label lblIMC)
         {
-            this.usuario_View = usuario_View;
+            this.page = usuario_View;
             this.navigation = navigation;
             this.lblSaludo = lblSaludo;
             this.lblDNI = lblDNI;

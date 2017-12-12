@@ -27,7 +27,7 @@ namespace SaladilloFit.Model
         [MaxLength(7), Column("Tipo")]
         public String Tipo { get; set; }
 
-        public float CalcularIMC()
+        public static float CalcularIMC(float Peso, int Altura)
         {
             return float.Parse((Peso/Math.Pow(Altura/100, 2)).ToString());
         }

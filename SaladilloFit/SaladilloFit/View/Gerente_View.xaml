@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SaladilloFit.View.Gerente_View">
+    <!-- Hoja de Estilos -->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="lytStyle"
+                   TargetType="StackLayout">
+                <Setter Property="BackgroundColor"
+                        Value="Orange"/>
+            </Style>
+            <Style x:Key="lblStyle"
+                   TargetType="Label">
+                <Setter Property="TextColor"
+                        Value="White"/>
+            </Style>
+            <Style x:Key="btnStyle"
+                   TargetType="Button">
+                <Setter Property="TextColor"
+                        Value="Black"/>
+                <Setter Property="BackgroundColor"
+                        Value="White"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <!-- Layout -->
+    <ContentPage.Content>
+        <StackLayout Orientation="Horizontal">
+
+            <StackLayout>
+                <Label Text="Nombre"
+                       Style="{StaticResource lblStyle}"/>
+                <Entry x:Name="txtNombre"/>
+            </StackLayout>
+
+            <StackLayout>
+                <Label Text="DNI"
+                       Style="{StaticResource lblStyle}"/>
+                <Entry x:Name="txtDNI"/>
+            </StackLayout>
+
+            <StackLayout>
+                <Label Text="Horario"
+                       Style="{StaticResource lblStyle}"/>
+                <Picker x:Name="pckHorario"/>
+            </StackLayout>
+
+            <Button x:Name="btnLogout" 
+                    Text="Cambiar Usuario"
+                    Style="{StaticResource btnStyle}"/>
+
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+
+            <StackLayout>
+                <Label Text="Edad"
+                       Style="{StaticResource lblStyle}"/>
+                <Entry x:Name="txtEdad"/>
+            </StackLayout>
+
+            <StackLayout>
+                <Label Text="Altura"
+                       Style="{StaticResource lblStyle}"/>
+
+                <StackLayout Orientation="Horizontal">
+                    <Entry x:Name="txtAltura"/>
+                    <Label Text="cm"
+                           Style="{StaticResource lblStyle}"/>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout>
+                <Label Text="Peso"
+                       Style="{StaticResource lblStyle}"/>
+
+                <StackLayout Orientation="Horizontal">
+                    <Entry x:Name="txtPeso"/> .
+                    <Label Text="Kg"
+                           Style="{StaticResource lblStyle}"/>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout>
+                <Label Text="Objetivo"
+                       Style="{StaticResource lblStyle}"/>
+                <Picker x:Name="pckObjetivo"/>
+            </StackLayout>
+
+        </StackLayout>
+
+        <Button x:Name="btnAniadir" 
+                Text="Añadir"
+                Style="{StaticResource btnStyle}"/>
+
+        <Label x:Name="lblStatus"
+               Style="{StaticResource lblStyle}"/>
+
+        <Label Text="Usuarios"
+               Style="{StaticResource lblStyle}"/>
+
+        <ListView x:Name="lstUsuarios"
+                  HorizontalOptions="CenterAndExpand">
+            <!-- Encabezado -->
+            <ListView.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0"
+                               Text="DNI"
+                               HorizontalOptions="Start"
+                               Style="{StaticResource lblStyle}"/>
+                    <Label Grid.Column="1"
+                               Text="Nombre"
+                               HorizontalOptions="Start"
+                               Style="{StaticResource lblStyle}"/>
+                    <Label Grid.Column="2"
+                               Text="Horario"
+                               HorizontalOptions="Start"
+                               Style="{StaticResource lblStyle}"/>
+                    <Label Grid.Column="3"
+                               Text="Edad"
+                               HorizontalOptions="Start"
+                               Style="{StaticResource lblStyle}"/>
+                    <Label Grid.Column="4"
+                               Text="Altura"
+                               HorizontalOptions="Start"
+                               Style="{StaticResource lblStyle}"/>
+                    <Label Grid.Column="5"
+                               Text="Peso"
+                               HorizontalOptions="Start"
+                               Style="{StaticResource lblStyle}"/>
+                    <Label Grid.Column="6"
+                               Text="IMC"
+                               HorizontalOptions="Start"
+                               Style="{StaticResource lblStyle}"/>
+                    <Label Grid.Column="7"
+                               Text="Objetivo"
+                               HorizontalOptions="Start"
+                               Style="{StaticResource lblStyle}"/>
+                </Grid>
+            </ListView.Header>
+            <!-- Contenido de la lista -->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0"
+                               Text="{Binding DNI}"
+                               HorizontalOptions="Start"
+                               Style="{StaticResource lblStyle}"/>
+                            <Label Grid.Column="1"
+                                   Text="{Binding Nombre}"  
+                                   HorizontalOptions="Start"
+                               Style="{StaticResource lblStyle}"/>
+                            <Label Grid.Column="2"
+                               Text="{Binding Horario}"
+                               HorizontalOptions="Start"
+                               Style="{StaticResource lblStyle}"/>
+                            <Label Grid.Column="3"
+                               Text="{Binding Edad}"
+                               HorizontalOptions="Start"
+                               Style="{StaticResource lblStyle}"/>
+                            <Label Grid.Column="4"
+                               Text="{Binding Altura}"
+                               HorizontalOptions="Start"
+                               Style="{StaticResource lblStyle}"/>
+                            <Label Grid.Column="5"
+                               Text="{Binding Peso}"
+                               HorizontalOptions="Start"
+                               Style="{StaticResource lblStyle}"/>
+                            <Label Grid.Column="6"
+                               Text="{Binding IMC}"
+                               HorizontalOptions="Start"
+                               Style="{StaticResource lblStyle}"/>
+                            <Label Grid.Column="7"
+                               Text="{Binding Objetivo}"
+                               HorizontalOptions="Start"
+                               Style="{StaticResource lblStyle}"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>
