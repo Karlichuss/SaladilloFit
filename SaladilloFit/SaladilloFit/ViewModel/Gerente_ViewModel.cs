@@ -41,12 +41,13 @@ namespace SaladilloFit.ViewModel
             this.lstUsuarios = lstUsuarios;
         }
 
-        public void RellenarPickers()
+        public async Task RellenarPickersAsync()
         {
-            //pckHorario.ItemsSource=App.Horarios_Repository.
+            pckHorario.ItemsSource = await App.Horarios_Repository.GetHorarios();
+            pckObjetivo.ItemsSource = await App.Objetivos_Repository.GetObjetivos();
         }
 
-        public async Task Añadir_Usuario()
+        public async Task Aniadir_Usuario()
         {
             if (String.IsNullOrEmpty(txtNombre.Text) || String.IsNullOrEmpty(txtDNI.Text) || String.IsNullOrEmpty(txtEdad.Text) || String.IsNullOrEmpty(txtAltura.Text) || String.IsNullOrEmpty(txtPeso.Text) || pckHorario.SelectedIndex == -1 || pckObjetivo.SelectedIndex == -1)
             {
@@ -58,7 +59,7 @@ namespace SaladilloFit.ViewModel
             }
             else if (String.IsNullOrEmpty((await Usuarios_Repository.ExisteNombre(txtNombre.Text)).Nombre))
             {
-                lblStatus.Text = "El usuario ya exsite.";
+                lblStatus.Text = "El usuario ya existe.";
             }
             else
             {

@@ -42,6 +42,7 @@
     <Compile Include="Assets\Objetivos_Repository.cs" />
     <Compile Include="Assets\Usuarios_Repository.cs" />
     <Compile Include="Model\Horarios.cs" />
+    <Compile Include="Model\LineaUsuario.cs" />
     <Compile Include="Model\Objetivos.cs" />
     <Compile Include="Model\Usuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -103,10 +104,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="View\Gerente_View.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <EmbeddedResource Include="View\Gerente_View.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.4.0.280\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.4.0.280\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />

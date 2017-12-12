@@ -26,38 +26,49 @@
     </ContentPage.Resources>
     <!-- Layout -->
     <ContentPage.Content>
-        <StackLayout Orientation="Horizontal">
+        <StackLayout VerticalOptions="Center"
+                     HorizontalOptions="Center"
+                     Padding="25, 25"
+                     Style="{StaticResource lytStyle}">
+            
+            <StackLayout Orientation="Horizontal">
 
-            <StackLayout>
-                <Label Text="Nombre"
+                <StackLayout>
+                    <Label Text="Nombre"
                        Style="{StaticResource lblStyle}"/>
-                <Entry x:Name="txtNombre"/>
-            </StackLayout>
+                    <Entry x:Name="txtNombre"
+                           WidthRequest="200"/>
+                </StackLayout>
 
-            <StackLayout>
-                <Label Text="DNI"
+                <StackLayout>
+                    <Label Text="DNI"
                        Style="{StaticResource lblStyle}"/>
-                <Entry x:Name="txtDNI"/>
-            </StackLayout>
+                    <Entry x:Name="txtDNI"
+                           WidthRequest="200"/>
+                </StackLayout>
 
-            <StackLayout>
-                <Label Text="Horario"
+                <StackLayout>
+                    <Label Text="Horario"
                        Style="{StaticResource lblStyle}"/>
-                <Picker x:Name="pckHorario"/>
-            </StackLayout>
+                    <Picker x:Name="pckHorario"
+                            WidthRequest="200"/>
+                </StackLayout>
 
-            <Button x:Name="btnLogout" 
+                <Button x:Name="btnLogout" 
                     Text="Cambiar Usuario"
-                    Style="{StaticResource btnStyle}"/>
+                    Style="{StaticResource btnStyle}"
+                    VerticalOptions="End"
+                    HorizontalOptions="End"/>
 
-        </StackLayout>
+            </StackLayout>
 
-        <StackLayout Orientation="Horizontal">
+            <StackLayout Orientation="Horizontal">
 
-            <StackLayout>
-                <Label Text="Edad"
+                <StackLayout>
+                    <Label Text="Edad"
                        Style="{StaticResource lblStyle}"/>
-                <Entry x:Name="txtEdad"/>
+                    <Entry x:Name="txtEdad"
+                           WidthRequest="100"/>
             </StackLayout>
 
             <StackLayout>
@@ -65,7 +76,8 @@
                        Style="{StaticResource lblStyle}"/>
 
                 <StackLayout Orientation="Horizontal">
-                    <Entry x:Name="txtAltura"/>
+                    <Entry x:Name="txtAltura"
+                               WidthRequest="100"/>
                     <Label Text="cm"
                            Style="{StaticResource lblStyle}"/>
                 </StackLayout>
@@ -76,7 +88,8 @@
                        Style="{StaticResource lblStyle}"/>
 
                 <StackLayout Orientation="Horizontal">
-                    <Entry x:Name="txtPeso"/> .
+                    <Entry x:Name="txtPeso"
+                               WidthRequest="100"/>
                     <Label Text="Kg"
                            Style="{StaticResource lblStyle}"/>
                 </StackLayout>
@@ -85,7 +98,8 @@
             <StackLayout>
                 <Label Text="Objetivo"
                        Style="{StaticResource lblStyle}"/>
-                <Picker x:Name="pckObjetivo"/>
+                <Picker x:Name="pckObjetivo"
+                            WidthRequest="200"/>
             </StackLayout>
 
         </StackLayout>
@@ -201,5 +215,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

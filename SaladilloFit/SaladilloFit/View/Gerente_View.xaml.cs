@@ -1,6 +1,11 @@
-﻿using System;
-using SaladilloFit.Model;
+﻿using SaladilloFit.Model;
 using SaladilloFit.ViewModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,12 +24,12 @@ namespace SaladilloFit.View
 
             InitViews();
 
-            // Cuando hacemos click en Iniciar Sesión, realiza las comprobaciones de que el usuario y la contraseña son correctas y realiza la navegación a la vista que corresponda.
+            // Cuando hacemos click en Añadir, introduce en la base de datos un nuevo usuario con los datos del formulario.
             btnAniadir.Clicked += async (sender, args) =>
             {
-                await ViewModel.Añadir_Usuario();
+                await ViewModel.Aniadir_Usuario();
             };
-            
+
             // Cuando hacemos click en Cambiar Usuario, volvemos a la vista de Login.
             btnLogout.Clicked += (sender, args) =>
             {
@@ -35,7 +40,7 @@ namespace SaladilloFit.View
 
         public void InitViews()
         {
-            ViewModel.RellenarPickers();
+            ViewModel.RellenarPickersAsync();
         }
     }
 }

@@ -33,6 +33,13 @@ namespace SaladilloFit.Assets
             conn.CreateTableAsync<Horarios>().Wait();
         }
 
+        #endregion
+
+
+        #region Select
+
+
+
         public async Task<List<Horarios>> GetAllItems()
         {
             List<Horarios> lst = new List<Horarios>();
@@ -58,9 +65,28 @@ namespace SaladilloFit.Assets
             return horario;
         }
 
-        #endregion
+        public async Task<List<String>> GetHorarios()
+        {
+            List<Horarios> lst = new List<Horarios>();
+            List<String> nombres = new List<String>();
 
-        #region Select
+            try
+            {
+                lst = await conn.Table<Horarios>().ToListAsync();
+
+                foreach (Horarios o in lst)
+                {
+                    nombres.Add(o.Horario);
+                }
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
+            }
+
+            return nombres;
+        }
+
 
         #endregion
     }

@@ -33,6 +33,10 @@ namespace SaladilloFit.Assets
             conn.CreateTableAsync<Objetivos>().Wait();
         }
 
+        #endregion
+
+        #region Select
+
         public async Task<List<Objetivos>> GetAllItems()
         {
             List<Objetivos> lst = new List<Objetivos>();
@@ -58,9 +62,27 @@ namespace SaladilloFit.Assets
             return objetivo;
         }
 
-        #endregion
+        public async Task<List<String>> GetObjetivos()
+        {
+            List<Objetivos> lst = new List<Objetivos>();
+            List<String> nombres = new List<String>();
 
-        #region Select
+            try
+            {
+                lst = await conn.Table<Objetivos>().ToListAsync();
+
+                foreach(Objetivos o in lst)
+                {
+                    nombres.Add(o.Objetivo);
+                }
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
+            }
+
+            return nombres;
+        }
 
         #endregion
     }
